@@ -10,22 +10,35 @@ Date.prototype.subtractHours = function(h) {
     a.setTime(a.getTime() - (h*60*60*1000));
     return a;
 }
-//works for Kyiv time zone only! Checks if timezone is +2 or +3, after that subtracts extra miliseconds, and we get precise calculations up to seconds.
-function ignoreKyivTimeZone(date){
-    if (date.getTimezoneOffset() === -180){
-        return date.subtractHours(3);
-    } else if (date.getTimezoneOffset() === -120){
-        return date.subtractHours(2)
-    }
-};
+
 // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 // console.log(timezone); // Europe/Kiev
 
 // console.log(today.getTimezoneOffset())
 
-// let birthday22 = new Date(2000, 9, 11);
+// let birthday22 = new Date(2022, 9, 14, 23, 55, 59);
+
+// console.log(birthday22);
+
+
 
 function getAge(date){
-    return ignoreKyivTimeZone(new Date(new Date().getTime() - date.getTime())).getFullYear() - 1970;
+    return new Date(new Date().getTime() - date.getTime()).getUTCFullYear() - 1970;
+}
+function getWeekDay(date){
+    let options = {weekday: 'long'};
+    return date.toLocaleString('en-Uk',options);
 }
 
+
+
+// let today = new Date();
+
+// console.log(birthday22);
+// console.log(birthday22.toLocaleString('en-Uk',options));
+// console.log(birthday22.toUTCString());
+
+// var d = new Date();
+// var utcDate = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds());
+
+// console.log(d.getUTCFullYear())
