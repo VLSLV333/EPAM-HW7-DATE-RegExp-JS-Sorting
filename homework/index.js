@@ -50,6 +50,34 @@ function getProgrammersDay(date){
         return `13 Sep, ${date} (${getWeekDay(new Date(date, 8, 13 ))})`
     }
 }
+function howFarIs(date){
+    let today = new Date();
+    let weekDayValues = {
+        "Monday" : 1,
+        "Tuesday" : 2,
+        "Wednesday" : 3,
+        "Thursday" : 4,
+        "Friday" : 5,
+        "Saturday" : 6,
+        "Sunday" : 7,
+    }
+    let todaysValue = weekDayValues[getWeekDay(today)];
+    let input = date[0].toUpperCase() + date.slice(1);
+    let inputValue = weekDayValues[input];
+    if (todaysValue < inputValue){
+        return `It's ${inputValue-todaysValue} day(s) left till ${input}.`
+    } else if (todaysValue > inputValue){
+        return `It's ${7-todaysValue+inputValue} day(s) left till ${input}.`
+    } else if (todaysValue === inputValue){
+        return `Hey, today is ${input} =)`
+    }
+}
+
+
+
+
+
+
 
 
 
