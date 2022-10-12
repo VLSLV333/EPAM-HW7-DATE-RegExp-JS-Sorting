@@ -27,27 +27,69 @@ function getWeekDay(date){
     return date.toLocaleString('en-Uk',options);
 }
 function getAmountDaysToNewYear(){
-    return;
+    let today=new Date();
+    let newYear=new Date(today.getFullYear()+1, 0, 1);
+    let one_day=1000*60*60*24;
+    let splitedDaysToNewYear = ((newYear.getTime()-today.getTime())/(one_day) + "").split(".");
+    if (splitedDaysToNewYear.length === 1){
+        return Math.round((newYear.getTime()-today.getTime())/(one_day))
+    } else {
+        if (+splitedDaysToNewYear[1][0] === 0 && +splitedDaysToNewYear[1][1] <= 4){
+            return Math.floor((newYear.getTime()-today.getTime())/(one_day))
+        } else {
+            return Math.ceil((newYear.getTime()-today.getTime())/(one_day))
+        }
+    }
+}
+function getProgrammersDay(date){
+    if (date%4 === 0){
+        // let programmersDay = new Date(date, 8, 12)
+        return `12 Sep, ${date} (${getWeekDay(new Date(date, 8, 12))})`
+        // console.log( getWeekDay(programmersDay))
+    } else {
+        return `13 Sep, ${date} (${getWeekDay(new Date(date, 8, 13 ))})`
+    }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // let today = new Date();
-let today = new Date(2022, 9, 11, 0, 0, 0);
-// let birthday22 = new Date(2022, 0, 1, 0, 0, 0);
+// let today = new Date(2022, 9, 11, 0, 0, 0);
+// // let birthday22 = new Date(2022, 0, 1, 0, 0, 0);
 
-console.log(today);
+// console.log(today);
 
-let nextYear = new Date(today.getFullYear() + 1 + "");
-let nextYear1 = new Date("2023").subtractHours(2);
+// let nextYear = new Date(today.getFullYear() + 1 + "");
+// let nextYear1 = new Date("2023").subtractHours(2);
 
-console.log(nextYear);
-console.log(nextYear1);
+// console.log(nextYear);
+// console.log(nextYear1);
 
-// instead of dividing seconds we should add them to 1970 to see how many days into they will convert, after that just get days from it!
+// // instead of dividing seconds we should add them to 1970 to see how many days into they will convert, after that just get days from it!
 
-let milisecondsToNewYear = nextYear1.getTime() - today.getTime();
-let daysToNewYear = Math.round(milisecondsToNewYear/ 1000 / 60 / 60 / 24)
+// let milisecondsToNewYear = nextYear1.getTime() - today.getTime();
+// let daysToNewYear = Math.round(milisecondsToNewYear/ 1000 / 60 / 60 / 24)
 
-console.log(daysToNewYear);
+// console.log(daysToNewYear);
 
 // console.log(new Date(nextYear1));
 
