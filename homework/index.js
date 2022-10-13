@@ -112,7 +112,10 @@ function getHexadecimalColors(str){
             return finalArrayAnswer;
         }
 }
-
+function isValidPassword(str){
+    let myRegExp = new RegExp ('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')
+    return myRegExp.test(str);
+}
 
 
 
