@@ -85,5 +85,11 @@ function matchExact(r, str) {
         return myRegExp.test(string);
     }
 }
-
+function capitalize(str){
+    function upperCaser(x){
+        return x.toUpperCase();
+    }
+    let myRegExp = new RegExp ('(^|\\s)([a-z])', "ig")
+    return newString = str.replace(myRegExp, upperCaser)
+}
 
