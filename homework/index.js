@@ -92,4 +92,12 @@ function capitalize(str){
     let myRegExp = new RegExp ('(^|\\s)([a-z])', "ig")
     return newString = str.replace(myRegExp, upperCaser)
 }
+function isValidAudioFile(str){
+    if (str === undefined){
+        return false
+    } else {
+        let myRegExp = new RegExp ('^[a-z]+(\.mp3|\.flac|\.alac|\.aac)$', 'i')
+        return myRegExp.test(str);
+    }
+}
 
