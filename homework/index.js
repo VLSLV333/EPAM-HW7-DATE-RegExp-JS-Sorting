@@ -1,24 +1,3 @@
-//ads exact number of hours to our date
-Date.prototype.addHours = function(h) {
-    let a = structuredClone(this);
-    a.setTime(a.getTime() + (h*60*60*1000));
-    return a;
-}
-//subtracts exact number of hours from our date
-Date.prototype.subtractHours = function(h) {
-    let a = structuredClone(this);
-    a.setTime(a.getTime() - (h*60*60*1000));
-    return a;
-}
-
-// const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-// console.log(timezone); // Europe/Kiev
-
-// console.log(today.getTimezoneOffset())
-
-
-
-
 function getAge(date){
     return new Date(new Date().getTime() - date.getTime()).getUTCFullYear() - 1970;
 }
@@ -43,9 +22,7 @@ function getAmountDaysToNewYear(){
 }
 function getProgrammersDay(date){
     if (date%4 === 0){
-        // let programmersDay = new Date(date, 8, 12)
         return `12 Sep, ${date} (${getWeekDay(new Date(date, 8, 12))})`
-        // console.log( getWeekDay(programmersDay))
     } else {
         return `13 Sep, ${date} (${getWeekDay(new Date(date, 8, 13 ))})`
     }
@@ -119,12 +96,21 @@ function isValidPassword(str){
 function addThousandsSeparators(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
-
-
-
-
-
+function getAllUrlsFromText(str){
+    let myRegExp = new RegExp ('https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)*\\/', 'gi');
+    try{ 
+        if (str === undefined){
+            throw new TypeError('error')
+        } else if (str.match(myRegExp) === null){
+            return []
+        } else  {
+            return str.match(myRegExp);
+        }
+    } catch(e){
+        return e.message
+    }
+    
+}
 
 
 

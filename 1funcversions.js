@@ -7,6 +7,18 @@
 // used to regulate string outputed by browser
 // let options = {weekday: 'long'};
 
+//ads exact number of hours to our date
+// Date.prototype.addHours = function(h) {
+//     let a = structuredClone(this);
+//     a.setTime(a.getTime() + (h*60*60*1000));
+//     return a;
+// }
+//subtracts exact number of hours from our date
+// Date.prototype.subtractHours = function(h) {
+//     let a = structuredClone(this);
+//     a.setTime(a.getTime() - (h*60*60*1000));
+//     return a;
+// }
 
 // checks if new Date() was created in +2 or +3 timezone, in case of +2 ads 1 hour to the time, so we get constant calculation results in Kyiv region
 
