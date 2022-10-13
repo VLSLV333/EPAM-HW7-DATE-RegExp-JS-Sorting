@@ -116,7 +116,9 @@ function isValidPassword(str){
     let myRegExp = new RegExp ('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')
     return myRegExp.test(str);
 }
-
+function addThousandsSeparators(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 
 
