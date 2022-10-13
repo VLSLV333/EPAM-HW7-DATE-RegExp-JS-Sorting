@@ -100,4 +100,45 @@ function isValidAudioFile(str){
         return myRegExp.test(str);
     }
 }
+function getHexadecimalColors(str){
+    let myRegExp = new RegExp ('(\\s|^)#(([a-f0-9]{3,3})|(([a-f0-9]){2,2}([a-f0-9]){2,2}([a-f0-9]){2,2}))(;\\s|$|;$|\\s)', 'gi')
+    let finalRegExp = new RegExp('#[a-f0-9]{3,6}','gi')
+    let unpreparedArray = str.match(myRegExp)
+    if (unpreparedArray === null){
+        return [];
+    } else{
+        function replaceWithSpace(x){
+            return x = ' ';
+        }
+        let filteredString = str.replace(myRegExp, replaceWithSpace)
+        if (filteredString.match(myRegExp) === null){
+            let unfilteredStringAnswer = unpreparedArray.join("");
+            let finalArrayAnswer = unfilteredStringAnswer.match(finalRegExp);
+            return finalArrayAnswer;
+        } else {
+            while(filteredString.match(myRegExp) != null){
+                filteredString.match(myRegExp).forEach(x => unpreparedArray.push(x))
+                    filteredString = filteredString.replace(myRegExp, replaceWithSpace);
+            }
+            let unfilteredStringAnswer = unpreparedArray.join("");
+            let finalArrayAnswer = unfilteredStringAnswer.match(finalRegExp);
+            return finalArrayAnswer
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
