@@ -86,3 +86,36 @@
 // var utcDate = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds());
 
 // console.log(d.getUTCMilliseconds())
+
+
+// func 9 first version
+
+// function getHexadecimalColors(str){
+//     let spaceRegExp = new RegExp('#','gi');
+//     let spacedColors = str.replace(spaceRegExp, ' #')
+//     console.log(spacedColors);
+//     let myRegExp = new RegExp ('(\\s|^)#(([a-f0-9]{3,3})|(([a-f0-9]){2,2}([a-f0-9]){2,2}([a-f0-9]){2,2}))(;\\s|$|;$|\\s)', 'gi')
+//     let finalRegExp = new RegExp('#[a-f0-9]{3,6}','gi')
+//     let unpreparedArray = spacedColors.match(myRegExp)
+//     if (unpreparedArray === null){
+//         return [];
+//     } else{
+//         function replaceWithSpace(x){
+//             return x = ' ';
+//         }
+//         let filteredString = spacedColors.replace(myRegExp, replaceWithSpace)
+//         if (filteredString.match(myRegExp) === null){
+//             let unfilteredStringAnswer = unpreparedArray.join("");
+//             let finalArrayAnswer = unfilteredStringAnswer.match(finalRegExp);
+//             return finalArrayAnswer;
+//         } else {
+//             while(filteredString.match(myRegExp) != null){
+//                 filteredString.match(myRegExp).forEach(x => unpreparedArray.push(x))
+//                     filteredString = filteredString.replace(myRegExp, replaceWithSpace);
+//             }
+//             let unfilteredStringAnswer = unpreparedArray.join("");
+//             let finalArrayAnswer = unfilteredStringAnswer.match(finalRegExp);
+//             return finalArrayAnswer
+//         }
+//     }
+// }
