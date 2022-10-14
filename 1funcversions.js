@@ -20,6 +20,12 @@
 //     return a;
 // }
 
+//     checks if provided string exactly matches the RegExp
+// function matchExact(r, str) {
+//     let match = str.match(r);
+//     return match && str === match[0];
+// }
+
 // checks if new Date() was created in +2 or +3 timezone, in case of +2 ads 1 hour to the time, so we get constant calculation results in Kyiv region
 
 // function constantTimeZone(date){

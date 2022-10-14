@@ -21,53 +21,62 @@ function getAmountDaysToNewYear(){
     }
 }
 function getProgrammersDay(date){
-    if (date%4 === 0){
-        return `12 Sep, ${date} (${getWeekDay(new Date(date, 8, 12))})`
+    if (date === undefined){
+        return 'Please, provide year'
     } else {
-        return `13 Sep, ${date} (${getWeekDay(new Date(date, 8, 13 ))})`
+        if (date%4 === 0){
+            return `12 Sep, ${date} (${getWeekDay(new Date(date, 8, 12))})`
+        } else {
+            return `13 Sep, ${date} (${getWeekDay(new Date(date, 8, 13 ))})`
+        }
     }
 }
 function howFarIs(date){
-    let today = new Date();
-    let weekDayValues = {
-        "Monday" : 1,
-        "Tuesday" : 2,
-        "Wednesday" : 3,
-        "Thursday" : 4,
-        "Friday" : 5,
-        "Saturday" : 6,
-        "Sunday" : 7,
-    }
-    let todaysValue = weekDayValues[getWeekDay(today)];
-    let input = date[0].toUpperCase() + date.slice(1);
-    let inputValue = weekDayValues[input];
-    if (todaysValue < inputValue){
-        return `It's ${inputValue-todaysValue} day(s) left till ${input}.`
-    } else if (todaysValue > inputValue){
-        return `It's ${7-todaysValue+inputValue} day(s) left till ${input}.`
-    } else if (todaysValue === inputValue){
-        return `Hey, today is ${input} =)`
+    try{
+        let today = new Date();
+        let weekDayValues = {
+            "Monday" : 1,
+            "Tuesday" : 2,
+            "Wednesday" : 3,
+            "Thursday" : 4,
+            "Friday" : 5,
+            "Saturday" : 6,
+            "Sunday" : 7,
+        }
+        let todaysValue = weekDayValues[getWeekDay(today)];
+        let input = date[0].toUpperCase() + date.slice(1);
+        let inputValue = weekDayValues[input];
+        if (inputValue === undefined){
+            return 'Please, provide valid day of the week'
+        } else if (todaysValue < inputValue){
+            return `It's ${inputValue-todaysValue} day(s) left till ${input}.`
+        } else if (todaysValue > inputValue){
+            return `It's ${7-todaysValue+inputValue} day(s) left till ${input}.`
+        } else if (todaysValue === inputValue){
+            return `Hey, today is ${input} =)`
+        }
+    } catch(e){
+        return 'Please, provide day of the week';
     }
 }
-
-function matchExact(r, str) {
-    let match = str.match(r);
-    return match && str === match[0];
-}
- function isValidIdentifier(string){
+function isValidIdentifier(string){
     if (string === undefined){
-        return false
+        return 'Please, provide your variable'
     } else {
         let myRegExp = new RegExp ('^[a-z\$\_]{1,}[a-z0-9\$\_]{0,}$', "i")
         return myRegExp.test(string);
     }
 }
 function capitalize(str){
-    function upperCaser(x){
-        return x.toUpperCase();
+    try{
+        function upperCaser(x){
+            return x.toUpperCase();
+        }
+        let myRegExp = new RegExp ('(^|\\s)([a-z])', "ig")
+        return newString = str.replace(myRegExp, upperCaser)
+    } catch(e){
+        return 'Please, provide your sentence'
     }
-    let myRegExp = new RegExp ('(^|\\s)([a-z])', "ig")
-    return newString = str.replace(myRegExp, upperCaser)
 }
 function isValidAudioFile(str){
     if (str === undefined){
@@ -90,7 +99,7 @@ function getHexadecimalColors(str){
         }
 }
 function isValidPassword(str){
-    let myRegExp = new RegExp ('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')
+    let myRegExp = new RegExp ('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[\\w\\W]{8,}$')
     return myRegExp.test(str);
 }
 function addThousandsSeparators(x) {
@@ -109,8 +118,4 @@ function getAllUrlsFromText(str){
     } catch(e){
         return e.message
     }
-    
 }
-
-
-
