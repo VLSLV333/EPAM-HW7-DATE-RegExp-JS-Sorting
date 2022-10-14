@@ -24,14 +24,17 @@ function getAmountDaysToNewYear(){
     }
 }
 function getProgrammersDay(date){
+    let month = 8;
     if (date === undefined){
         return 'Please, provide year'
     } else {
         let dividerForLeapYear = 4;
         if (date%dividerForLeapYear === 0){
-            return `12 Sep, ${date} (${getWeekDay(new Date(date, 8, 12))})`
+            let day = 12;
+            return `12 Sep, ${date} (${getWeekDay(new Date(date, month, day))})`
         } else {
-            return `13 Sep, ${date} (${getWeekDay(new Date(date, 8, 13 ))})`
+            let day = 13;
+            return `13 Sep, ${date} (${getWeekDay(new Date(date, month, day ))})`
         }
     }
 }
@@ -93,26 +96,36 @@ function isValidAudioFile(str){
     }
 }
 function getHexadecimalColors(str){
-    let myRegExp = new RegExp('#(([a-f0-9]{3,3})|(([a-f0-9]){2,2}([a-f0-9]){2,2}([a-f0-9]){2,2}))(;|$)', 'gi')
-    let finalRegExp = new RegExp('#[a-f0-9]{3,6}','gi')
-    let unpreparedArray = str.match(myRegExp)
-    if (unpreparedArray === null){
-        return [];
-    } else{
-            let unfilteredStringAnswer = unpreparedArray.join('');
-            let finalArrayAnswer = unfilteredStringAnswer.match(finalRegExp);
-            return finalArrayAnswer;
-        }
+    try{
+        let myRegExp = new RegExp('#(([a-f0-9]{3,3})|(([a-f0-9]){2,2}([a-f0-9]){2,2}([a-f0-9]){2,2}))(;|$)', 'gi')
+        let finalRegExp = new RegExp('#[a-f0-9]{3,6}','gi')
+        let unpreparedArray = str.match(myRegExp)
+        if (unpreparedArray === null){
+            return [];
+        } else{
+                let unfilteredStringAnswer = unpreparedArray.join('');
+                let finalArrayAnswer = unfilteredStringAnswer.match(finalRegExp);
+                return finalArrayAnswer;
+            }
+    } catch(e){
+        return 'Please, provide your string'
+    }
 }
 function isValidPassword(str){
     let myRegExp = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[\\w\\W]{8,}$')
     return myRegExp.test(str);
 }
 function addThousandsSeparators(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    try{
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    } catch(e){
+        return 'Please, provide your number'
+    }
 }
 function getAllUrlsFromText(str){
-let myRegExp = new RegExp('https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)*\\/', 'gi');
+    let firstPart = 'https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.';
+    let secondPart = '[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)*\\/'
+let myRegExp = new RegExp(firstPart+secondPart, 'gi');
     try{ 
         if (str === undefined){
             throw new TypeError('error')
